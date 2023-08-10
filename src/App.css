@@ -40,6 +40,12 @@ button:hover {
     background-color: #0056b3;
 }
 
+button:disabled {
+    background-color: #002c5bf3;
+}
+
+
+
 a {
     color: #007BFF;
     text-decoration: none;
