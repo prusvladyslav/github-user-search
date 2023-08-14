@@ -1,16 +1,13 @@
-import { useSelector } from "react-redux";
-import { RequestStatusMessage } from "../../atoms";
-import { RootState } from "../../redux/store";
+import { GitHubUserResponse } from "../../api/githubAPI"
+import { RequestStatusMessage } from "../../atoms"
 
-export const GitHubProfile = ({ }) => {
-    const user = useSelector((state: RootState) => state.user.user);
-    const loading = useSelector((state: RootState) => state.user.loading);
-    const error = useSelector((state: RootState) => state.user.error);
+export const GitHubProfile = ({ isLoading, isError, user }: { isLoading: boolean, isError: boolean, user?: GitHubUserResponse }) => {
     const { login = '', bio = '', avatar_url = '', html_url = '' } = user || {}
+
     return (
         < >
-            {loading === 'pending' && <RequestStatusMessage>Loading...</RequestStatusMessage>}
-            {error && <RequestStatusMessage>{error}</RequestStatusMessage>}
+            {isLoading && <RequestStatusMessage>Loading...</RequestStatusMessage>}
+            {isError && <RequestStatusMessage>Something went wrong</RequestStatusMessage>}
             {user && (
                 <div className="profile-card">
                     <img src={avatar_url} alt={login} />

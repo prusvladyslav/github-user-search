@@ -1,12 +1,14 @@
+import { QueryClient, QueryClientProvider } from 'react-query';
 import './App.css'
-import { GitHubProfile, GitHubSearch } from './components';
+import { Main } from './screens/Main/Main';
 function App() {
-
+  const client = new QueryClient()
   return (
-    <div className='container'>
-      <GitHubSearch />
-      <GitHubProfile />
-    </div>
+    <QueryClientProvider client={client}>
+      <div className='container'>
+        <Main />
+      </div>
+    </QueryClientProvider>
   );
 }
 
