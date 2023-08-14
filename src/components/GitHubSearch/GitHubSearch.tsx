@@ -10,13 +10,14 @@ export const GitHubSearch = ({ }) => {
         e.preventDefault()
         dispatch(clearState());
         dispatch(getUser(username));
+        setUsername('')
     };
     const loading = useSelector((state: RootState) => state.user.loading);
 
     return (
         <form className="search-container" onSubmit={searchUser}>
             <input value={username} onChange={(e) => setUsername(e.target.value)} />
-            <button type="submit" disabled={loading === 'pending'}>Search</button>
+            <button type="submit" disabled={loading === 'pending' || username === ''}>Search</button>
         </form>
     );
 }
