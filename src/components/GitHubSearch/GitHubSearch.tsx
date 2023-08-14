@@ -4,6 +4,7 @@ export const GitHubSearch = ({ mutate, isLoading }: { mutate: (v: string) => voi
     const searchUser = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         mutate(username)
+        setUsername('')
     };
 
     return (
